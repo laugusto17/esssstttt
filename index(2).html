@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- saved from url=(0093)https://lotofacilpremium.com.br/wp-content/plugins/scarcitybuilder/shortcode/index.php?edit=1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>PV001 - 2 HORAS</title>
+	<link rel="stylesheet" href="./css(3)">
+<script type="text/javascript" src="./jquery-latest.js"></script>
+<script type="text/javascript" src="./jquery.plugin.js"></script>
+<script type="text/javascript" src="./jquery.countdown.js"></script>
+<script type="text/javascript" src="./jquery.cookie.js"></script>
+<script type="text/javascript" src="./moment.js"></script>
+<script type="text/javascript">
+	$(window).load(function () {
+
+		// Check if date has been passed:
+		var checkIfExpiedOnLoad = setInterval(function () {
+//			console.log($(".countdown-amount").text());
+
+			if ($(".countdown-amount").text() == "000") {
+				// run onexpirey fn
+				liftOff();
+				clearInterval(checkIfExpiedOnLoad);
+			} else {
+				clearInterval(checkIfExpiedOnLoad);
+			}
+
+		}, 500);
+
+		var ontick_cb = function () {
+			window.parent.document.getElementById(window.name).style.height = document.getElementById('until2d').scrollHeight + 'px';
+		};
+
+
+		
+		// Cookie Based
+
+		// Check If Cookie Is Set ::
+		if ($.cookie('stbx_1')) {
+
+			// Read Cookie ::
+			var future = $.cookie('stbx_1');
+
+		} else {
+
+			// Set Cookie ::
+			$randomHour = Math.floor((Math.random() * 6) + 1);
+			$randomMinutes = Math.floor((Math.random() * 55) + 1);
+			$randomSeconds = Math.floor((Math.random() * 55) + 1);
+
+			var cookie_days = 0;
+			var cookie_hours = 2;
+			var cookie_minutes = 12;
+
+			$futureTime = moment().add('days', cookie_days).add('hours', cookie_hours).add('minutes', cookie_minutes);
+			//$futureTime = moment($futureTime).subtract('hours', $randomHour);
+			//$futureTime = moment($futureTime).subtract('minutes', $randomMinutes);
+			//$futureTime = moment($futureTime).subtract('seconds', $randomSeconds);
+			$futureTime = moment($futureTime).format();
+			var future = $futureTime;
+
+			$.cookie('stbx_1', future, {expires: 70});
+
+		}
+
+		function liftOff() {
+			
+														}
+
+		var dateGo = new Date(future);
+		$('#until2d').countdown({
+			until: dateGo,
+			alwaysExpire: true,
+			onExpiry: liftOff,
+			labels: ['Years', 'Months', 'Weeks', 'Dias', ' Horas', ' Minutos', ' Segundos'],
+			labels1: ['Year', 'Month', 'Week', 'Dia', ' Hora', ' Minuto', ' Segundo'],
+			onTick: ontick_cb,
+			format: 'dhmS'
+		});
+
+		
+
+	});
+</script>
+<style type="text/css">
+
+body {
+	background: none;
+	color: #444;
+	font: normal 16px "Open Sans", sans-serif;
+	margin: 0;
+}
+
+ul.countdown {
+	list-style: none;
+	margin: 0 0;
+	padding: 0;
+	display: block;
+	text-align: center;
+}
+
+ul.countdown li {
+	display: inline-block;
+	margin: 0 5px;
+	padding: 10px 10px;
+	background: #eee;
+	border: 3px solid #ccc;
+	border-radius: 10px;
+	width: 90px;
+}
+
+ul.countdown li span {
+	font-size: 67px;
+	font-weight: 300;
+	font-weight: bold;
+	line-height: 67px;
+}
+
+ul.countdown li p {
+	opacity: .9;
+	font-size: 17px;
+	padding: 0;
+	margin: 0;
+}
+
+#expired {
+	padding: 15px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+ul.countdown li, #expired {
+	background: #2A2A2A;
+	border: 3px solid #494949;
+	color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+/* extra small*/
+ul.countdown li {
+	width: 40px;
+}
+
+ul.countdown li span {
+	font-size: 21px;
+	line-height: 21px;
+}
+
+ul.countdown li p {
+	font-size: 10px;
+}
+
+
+a {
+	color: #76949F;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.source {
+	width: 405px;
+	margin: 0 auto;
+	background: #4f5861;
+	color: #a7abb1;
+	font-weight: bold;
+	display: block;
+	white-space: pre;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.btn {
+	background: #f56c4c;
+	margin: 40px auto;
+	padding: 12px;
+	display: block;
+	width: 100px;
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.btn:hover {
+	text-decoration: none;
+	opacity: .7;
+}
+
+</style>
+
+<link href="chrome-extension://nffaoalbilbmmfgbnbgppjihopabppdk/inject.css" type="text/css" rel="stylesheet"></head>
+<body class="vsc-initialized">
+	<ul id="until2d" class="countdown is-countdown"><span class="countdown-row countdown-show3"><li><div class="countdown-section"><span class="countdown-amount">2</span><p class="countdown-period"> Horas</p></div></li><li><div class="countdown-section"><span class="countdown-amount">11</span><p class="countdown-period"> Minutos</p></div></li><li><div class="countdown-section"><span class="countdown-amount">43</span><p class="countdown-period"> Segundos</p></div></li></span></ul>
+
+	<div id="expired" style="display: none">
+			</div>
+
+</body></html>
